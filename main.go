@@ -10,6 +10,7 @@ import (
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	data, err := reddit.GetTopPosts()
+	w.Header().Set("Content-Type", "text/html; charset=UTF-8")
 	if err != nil {
 		w.WriteHeader(500)
 		w.Write([]byte(err.Error()))
